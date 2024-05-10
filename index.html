@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: rgb(61, 4, 114);
+            background-color: rgb(150, 142, 235);
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: rgb(61, 4, 114);
+            color: white;
+        }
+        
+        td {
+            background-color: white;
+        }
+        
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: rgb(61, 4, 114);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: rgb(41, 0, 79);
+        }
+        
+        img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <th>Name</th>
+        <th>Action</th>
+        <th>Output</th>
+        <tr>
+            <td>Dice</td>
+            <td><img onclick="Dice()" title="dice-image" src="dice.gif" width="15%"></td>
+            <td id="o1"></td>
+        </tr>
+        <tr>
+            <td>Dinner</td>
+            <td><button onclick="dinner()">Click Me</button></td>
+            <td id="o2"></td>
+        </tr>
+        <tr>
+            <td>OTP</td>
+            <td><button onclick="otp()" title="otp" type="button">Click me</button></td>
+            <td id="o3"></td>
+        </tr>
+        <tr>
+            <td>Rock Paper Scissors</td>
+            <td>
+                <button onclick="rps(1)">Rock</button>
+                <button onclick="rps(2)">Paper</button>
+                <button onclick="rps(3)">Scissors</button>
+            </td>
+            <td id="o4"></td>
+        </tr>
+        <tr>
+            <td>Quotes</td>
+            <td><button onclick="quotes()">Click me</button></td>
+            <td id="o5"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><button onclick="pass()">Click</button></td>
+            <td id="o6"></td>
+        </tr>
+    </table>
+    <script>
+        function Dice() {
+            let x = Math.floor(Math.random() * 6) + 1;
+            document.querySelector('#o1').innerHTML = `<img src="${x}.png" width="15%">`;
+        }
+        
+        function otp() {
+            let x = Math.floor(Math.random() * (9999999 - 123456 + 1)) + 123456;
+            document.querySelector('#o3').innerText = x;
+        }
+        
+        function dinner() {
+            let menu = ['dal-chawal', 'rajma-chawal', 'paneer', 'chhole-bhature', 'macaroni', 'pasta', 'khadi-chawal', 'momo', 'idli', 'dosa'];
+            let n = menu.length;
+            let x = Math.floor(Math.random() * n);
+            document.querySelector('#o2').innerText = menu[x];
+        }
+        
+        function rps(user) {
+            let comp = Math.floor(Math.random() * 3) + 1;
+            if (user == comp) {
+                document.querySelector('#o4').innerText = 'Tie';
+            } else if ((user == 1 && comp == 2) || (user == 2 && comp == 3) || (user == 3 && comp == 1)) {
+                document.querySelector('#o4').innerText = 'User Win';
+            } else {
+                document.querySelector('#o4').innerText = 'Computer Win';
+            }
+        }
+        
+        function quotes() {
+            let q = ['"Never let the fear of striking out keep you from playing the game."'];
+            let l = q.length;
+            let x = Math.floor(Math.random() * l);
+            document.querySelector('#o5').innerText = q[x];
+        }
+        
+        function pass() {
+            let d = Math.floor(Math.random() * (99 - 10) + 1) + 10;
+            let c1 = Math.floor(Math.random() * (122 - 97) + 1) + 97;
+            let c2 = Math.floor(Math.random() * (122 - 97) + 1) + 97;
+            let c3 = Math.floor(Math.random() * (122 - 97) + 1) + 97;
+            let s = Math.floor(Math.random() * (47 - 33) + 1) + 33;
+            document.querySelector('#o6').innerHTML = String.fromCharCode(c1) + d + String.fromCharCode(c2) + String.fromCharCode(c3) + String.fromCharCode(s) + d;
+        }
+    </script>
+</body>
+</html>
